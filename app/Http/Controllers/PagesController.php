@@ -9,7 +9,7 @@ class PagesController extends Controller
 {
     public function execute()
     {
-        if (view()->exists('admin.index'))
+        if (view()->exists('admin.pages'))
         {
             $data = [
                 'pages'=>Page::all(),
@@ -18,5 +18,6 @@ class PagesController extends Controller
             ];
             return view('admin.pages',$data);
         }
+        abort(404);
     }
 }

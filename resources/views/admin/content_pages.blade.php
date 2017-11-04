@@ -20,11 +20,18 @@
                     <td>{{$page->alias}}</td>
                     <td>{{$page->text}}</td>
                     <td>{{$page->created_at}}</td>
-                    <td>{!! Html::link(route('pagesEdit',['page'=>$page->id]),$page->name,['alt'=>$page->name]) !!}</td>
+                    <td>
+                        {!! Form::open(['url'=>route('pagesEdit',['page'=>$page->id]), 'class'=>'form-horizontal','method'=>'POST']) !!}
+                            {!! Form::hidden('action','delete') !!}
+                            {!! Form::button('Удалить',['class'=>'btn btn-danger','type'=>'submit']) !!}
+
+                        {!! Form::close() !!}
+                    </td>
 
                 </tr>
             @endforeach
             </tbody>
         </table>
         @endif
+    {!! Html::link(route('pagesAdd'),'Новая страница') !!}
 </div>
